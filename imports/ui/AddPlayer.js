@@ -22,10 +22,10 @@ export default class AddPlayer extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" name="playerName" placeholder="Enter a player name" autoComplete="off" />
-          <button>Add Player</button>
+      <div className="item">
+        <form className="form" onSubmit={this.handleSubmit.bind(this)}>
+          <input className="form__input" type="text" name="playerName" placeholder="Enter a player name" autoComplete="off" />
+          <button className="button">Add Player</button>
         </form>
       </div>
     )
