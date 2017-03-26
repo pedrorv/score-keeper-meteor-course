@@ -15,6 +15,19 @@ const renderPlayers = function (playersList) {
   })
 }
 
+const handleSubmit = function (e) {
+  let playerName = e.target.playerName.value
+  e.preventDefault()
+
+  if (playerName) {
+    e.target.playerName.value = ''
+    Players.insert({
+      name: playerName,
+      score: 0
+    })
+  }
+}
+
 Meteor.startup(() => {
   Tracker.autorun(() => {
     let players = Players.find().fetch()
@@ -23,6 +36,10 @@ Meteor.startup(() => {
       <div>
         <h1>Score Keeper</h1>
         {renderPlayers(players)}
+        <form onSubmit={handleSubmit}>
+          <input type="text" name="playerName" placeholder="Enter a player name" />
+          <button>Add Player</button>
+        </form>
       </div>
     )
 
